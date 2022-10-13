@@ -7,15 +7,15 @@ import MainLayout from 'layout/MainLayout';
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
 
-// render - sample page
-const SamplePage = Loadable(lazy(() => import('pages/extra-pages/SamplePage')));
-
 // render - utilities
-const Typography = Loadable(lazy(() => import('pages/components-overview/Typography')));
-const Color = Loadable(lazy(() => import('pages/components-overview/Color')));
-const Shadow = Loadable(lazy(() => import('pages/components-overview/Shadow')));
-const AntIcons = Loadable(lazy(() => import('pages/components-overview/AntIcons')));
-const AddStudent = Loadable(lazy(()=> import('pages/extra-pages/Add-Student-page')));
+
+const Agenda = Loadable(lazy(()=> import('pages/extra-pages/Agenda')));
+const Staff = Loadable(lazy(()=> import('pages/extra-pages/Staff-page')));
+const Students = Loadable(lazy(()=> import('pages/extra-pages/Students-page')));
+const School = Loadable(lazy(()=> import('pages/extra-pages/School-page')));
+
+const Setup = Loadable(lazy(()=> import('pages/extra-pages/Setup')));
+
 
 
 // ==============================|| MAIN ROUTING ||============================== //
@@ -29,10 +29,6 @@ const MainRoutes = {
             element: <DashboardDefault />
         },
         {
-            path: 'color',
-            element: <Color />
-        },
-        {
             path: 'dashboard',
             children: [
                 {
@@ -42,24 +38,24 @@ const MainRoutes = {
             ]
         },
         {
-            path: 'sample-page',
-            element: <SamplePage />
+            path: 'setup',
+            element: <Setup />
         },
         {
-            path: 'shadow',
-            element: <Shadow />
+            path: 'agenda',
+            element: <Agenda />
         },
         {
-            path: 'typography',
-            element: <Typography />
+            path: 'staff',
+            element: <Staff />
         },
         {
-            path: 'icons/ant',
-            element: <AntIcons />
+            path: 'students',
+            element: <Students />
         },
         {
-            path: '/students/add-student',
-            element: <AddStudent />
+            path: 'school',
+            element: <School />
         }
     ]
 };

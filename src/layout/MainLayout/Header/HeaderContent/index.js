@@ -20,11 +20,11 @@ const HeaderContent = () => {
 
             <IconButton
                 component={Link}
-                href="https://github.com/codedthemes/mantis-free-react-admin-template"
+                href="https://github.com/rserravi"
                 target="_blank"
                 disableRipple
                 color="secondary"
-                title="Download Free Version"
+                title="Ruben Serra Github"
                 sx={{ color: 'text.primary', bgcolor: 'grey.100' }}
             >
                 <GithubOutlined />

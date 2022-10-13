@@ -6,7 +6,13 @@ import {
     BgColorsOutlined,
     FontSizeOutlined,
     UserAddOutlined,
-    LoadingOutlined
+    LoadingOutlined,
+    CalendarOutlined,
+    ProfileOutlined,
+    ScheduleOutlined,
+    TeamOutlined,
+    HomeOutlined,
+    SolutionOutlined
 } from '@ant-design/icons';
 
 // icons
@@ -17,51 +23,51 @@ const icons = {
     AntDesignOutlined,
     LoadingOutlined,
     AppstoreAddOutlined,
-    UserAddOutlined
+    UserAddOutlined,
+    CalendarOutlined,
+    ProfileOutlined,
+    ScheduleOutlined,
+    TeamOutlined,
+    HomeOutlined,
+    SolutionOutlined
+
 };
 
 // ==============================|| MENU ITEMS - UTILITIES ||============================== //
 
 const utilities = {
     id: 'utilities',
-    title: 'Utilities',
+    title: 'Principal',
     type: 'group',
     children: [
         {
-            id: 'add-student',
-            title: 'Add Student',
+            id: 'agenda',
+            title: 'Agenda',
             type: 'item',
-            url: '/students/add-student',
-            icon: icons.UserAddOutlined
+            url: '/agenda',
+            icon: icons.ScheduleOutlined
         },
         {
-            id: 'util-typography',
-            title: 'Typography',
+            id: 'staff',
+            title: 'Staff',
             type: 'item',
-            url: '/typography',
-            icon: icons.FontSizeOutlined
+            url: '/staff',
+            icon: icons.TeamOutlined
         },
         {
-            id: 'util-color',
-            title: 'Color',
+            id: 'students',
+            title: 'Students',
             type: 'item',
-            url: '/color',
-            icon: icons.BgColorsOutlined
+            url: '/students',
+            icon: icons.SolutionOutlined
         },
         {
-            id: 'util-shadow',
-            title: 'Shadow',
+            id: 'school',
+            title: 'School',
             type: 'item',
-            url: '/shadow',
-            icon: icons.BarcodeOutlined
-        },
-        {
-            id: 'ant-icons',
-            title: 'Ant Icons',
-            type: 'item',
-            url: '/icons/ant',
-            icon: icons.AntDesignOutlined,
-            breadcrumbs: false
+            url: '/school',
+            icon: icons.HomeOutlined
+
         }
     ]
 };
