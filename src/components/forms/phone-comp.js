@@ -9,6 +9,8 @@
 import React, { useEffect } from "react";
 import { Box, Button, FormControl, Grid, IconButton, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "../../../node_modules/@mui/material/index";
 import AddIcCallRoundedIcon from '@mui/icons-material/AddIcCallRounded';
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 export const PhoneForm = ({handleChange}) =>{
     
@@ -27,11 +29,11 @@ export const PhoneForm = ({handleChange}) =>{
 
     const ListItems = phones.map((element, index)=>{
         
-        const handleChangeTel=(event)=>{
+        const handleChangeTel=(value)=>{
             setPhones(
                 phones.map(item => 
                     item.id === index ? 
-                    {...item, "telNum": event.target.value }
+                    {...item, "telNum": value }
                     : item
                 )
             )
@@ -78,17 +80,10 @@ export const PhoneForm = ({handleChange}) =>{
                             </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} sx={{mt:2, mr:4}} >
-                    <TextField
-                        id= {"tel_"+element.name} 
-                        name={"name_"+element.name} 
-                        label={element.name + " number"}
-                        helperText="Enter the phone number"
-                        variant="standard"
+                    <PhoneInput
+                        placeholder="Enter the phone number"
+                        value = {element.telNum}
                         onChange={handleChangeTel}
-                        fullWidth
-                        focused
-                        required
-                        sx = {{mr:2}}
                     />
                 </Grid>
                 </Paper> 

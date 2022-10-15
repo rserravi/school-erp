@@ -36,6 +36,7 @@
         "react-image-file-resizer": "^0.4.8",
         "react-number-format": "^4.9.4",
         "react-perfect-scrollbar": "^1.5.8",
+        "react-phone-number-input": "^3.2.11",
         "react-redux": "^8.0.4",
         "react-router": "^6.4.1",
         "react-router-dom": "^6.4.1",
