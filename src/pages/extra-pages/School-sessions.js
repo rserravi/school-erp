@@ -1,17 +1,22 @@
 // material-ui
-import { Typography } from '@mui/material';
+import { Button } from '../../../node_modules/@mui/material/index';
+import { Stack } from '../../../node_modules/@mui/material/index';
 
 // project import
-import MainCard from 'components/MainCard';
+//import MainCard from 'components/MainCard';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
 const SchoolSessions = () => (
-    <MainCard title="Sample Card">
-        <Typography variant="body2">
-        School Sessions
-        </Typography>
-    </MainCard>
+    <>
+         <Stack direction="row" spacing={2}>
+         <Button href="/school" >Main</Button>
+         <Button href="/school/classrooms">Classrooms</Button>
+         <Button href="/school/equipment">Equipment</Button>
+         <Button href="/school/subjects">Subjects</Button>
+         <Button variant="outlined">Sessions</Button>
+       </Stack>
+    </>
 );
 
 export default SchoolSessions;

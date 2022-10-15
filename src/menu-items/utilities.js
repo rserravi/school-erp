@@ -46,27 +46,31 @@ const utilities = {
             type: 'item',
             url: '/agenda',
             icon: icons.ScheduleOutlined
+           
         },
         {
             id: 'staff',
             title: 'Staff',
             type: 'item',
             url: '/staff',
-            icon: icons.TeamOutlined
+            icon: icons.TeamOutlined,
+            breadcrumbs: false
         },
         {
             id: 'students',
             title: 'Students',
             type: 'item',
             url: '/students',
-            icon: icons.SolutionOutlined
+            icon: icons.SolutionOutlined,
+            breadcrumbs: false
         },
         {
             id: 'school',
             title: 'School',
             type: 'item',
             url: '/school',
-            icon: icons.HomeOutlined
+            icon: icons.HomeOutlined,
+            breadcrumbs: false
 
         }
     ]

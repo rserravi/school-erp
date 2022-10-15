@@ -14,6 +14,18 @@ const Staff = Loadable(lazy(()=> import('pages/extra-pages/Staff-page')));
 const Students = Loadable(lazy(()=> import('pages/extra-pages/Students-page')));
 const School = Loadable(lazy(()=> import('pages/extra-pages/School-page')));
 
+const AddStudent = Loadable(lazy(()=> import('pages/extra-pages/Add-Student-page')));
+const SeeStudent = Loadable(lazy(()=> import('pages/extra-pages/See-Student-page')));
+
+const AddStaff = Loadable(lazy(()=> import('pages/extra-pages/Add-Staff-page')));
+const SeeStaff = Loadable(lazy(()=> import('pages/extra-pages/See-Staff-page')));
+
+const Classrooms = Loadable(lazy(()=> import('pages/extra-pages/School-classrooms')));
+const Equipment = Loadable(lazy(()=> import('pages/extra-pages/School-equipment')));
+const Sessions = Loadable(lazy(()=> import('pages/extra-pages/School-sessions')));
+const Subjects = Loadable(lazy(()=> import('pages/extra-pages/School-subjects')));
+
+
 const Setup = Loadable(lazy(()=> import('pages/extra-pages/Setup')));
 
 
@@ -56,7 +68,41 @@ const MainRoutes = {
         {
             path: 'school',
             element: <School />
+        },
+        {
+            path: '/students/add-student',
+            element: <AddStudent />
+        },
+        {
+            path: '/students/see-students',
+            element: <SeeStudent />
+        },
+        {
+            path: '/staff/add-staff',
+            element: <AddStaff />
+        },
+        {
+            path: 'staff/see-staff',
+            element: <SeeStaff />
+        },
+        {
+            path: 'school/classrooms',
+            element: <Classrooms />
+        },
+        {
+            path: 'school/equipment',
+            element: <Equipment />
+        },
+        {
+            path: 'school/sessions',
+            element: <Sessions />
         }
+        ,
+        {
+            path: 'school/subjects',
+            element: <Subjects />
+        }
+
     ]
 };
 
