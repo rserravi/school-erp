@@ -7,7 +7,7 @@
 //==============================================================//
 
 import React, { useEffect } from "react";
-import { Box, Button, FormControl, Grid, IconButton, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "../../../node_modules/@mui/material/index";
+import { Box, Button, FormControl, Grid, IconButton, InputLabel, MenuItem, Paper, Select, Typography } from "../../../node_modules/@mui/material/index";
 import AddIcCallRoundedIcon from '@mui/icons-material/AddIcCallRounded';
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
@@ -40,11 +40,14 @@ export const PhoneForm = ({handleChange}) =>{
         }
 
         const handleChangeName=(event)=>{
-            //console.log ("index", index, phones[index]);
+
             // This will not RERENDER.
+
             /* let temp = phones;
             temp[index].name = event.target.value;
             setPhones(temp); */
+
+            // Mapping, on the other hand, will rerender the useState
 
             setPhones(
                 phones.map(item => 
@@ -84,6 +87,7 @@ export const PhoneForm = ({handleChange}) =>{
                         placeholder="Enter the phone number"
                         value = {element.telNum}
                         onChange={handleChangeTel}
+                        autoComplete='off'
                     />
                 </Grid>
                 </Paper> 
@@ -103,10 +107,9 @@ export const PhoneForm = ({handleChange}) =>{
     }
 
     useEffect(() => {
-        //console.log(phones)
         handleChange("phones", phones);
 
-    },[phones]); 
+    },[phones, handleChange]); 
     
     return (
         <React.Fragment>
