@@ -2,16 +2,17 @@
 //import { Typography } from '@mui/material';
 import HorizontalNav from 'layout/MainLayout/HorizontalMenu/Horizontal-Menu';
 
-
 // project import
 //import MainCard from 'components/MainCard';
 
-// ==============================|| SAMPLE PAGE ||============================== //
+// ==============================|| LEADS PAGE ||============================== //
 
-const Staff = () => (
+const Leads = () => (
     <>
-    <HorizontalNav type="staff" />
+    <HorizontalNav type="people" />
+    
+   
     </>
 );
 
-export default Staff;
+export default Leads;

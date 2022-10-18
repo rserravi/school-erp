@@ -67,8 +67,8 @@ export const NameForm = ({handleChange}) =>{
                         <TextField
                         id="firstname"
                         name='firstname'
-                        label="Name"
-                        helperText="Enter the name"
+                        label="First Name"
+                        helperText="Enter the first (and middle) name"
                         variant="standard"
                         onChange={handleChangeName}
                         fullWidth
@@ -81,7 +81,7 @@ export const NameForm = ({handleChange}) =>{
                         <TextField
                         id="lastname"
                         name="lastname"
-                        label="Lastname"
+                        label="Last Name"
                         helperText="Enter the last name"
                         variant="standard"
                         onChange={handleChangeLastName}
@@ -105,7 +105,7 @@ export const NameForm = ({handleChange}) =>{
                         </LocalizationProvider>
                     </Grid>
                     <Grid item  xs={3} sm={2} md={2} sx={{mt:2, mr:1, textAlign:"center"}}>
-                        <p style={{display:"inline-block", textAlign:"center"}}>{age} years Old</p>
+                        {age<18?age===0?<Alert severity="error">Enter a bithdate</Alert>:<Alert severity="warning">{age} years Old. Needs Legal Tutor</Alert>:<Alert severity="success">{age} years Old</Alert>}
                     </Grid>
                     <Grid item xs={12} sm={2} md={2} sx={{mt:2, mr:1}} >
                         <FormControl variant="standard" fullWidth sx={{  minWidth: 120 } }>
@@ -129,7 +129,7 @@ export const NameForm = ({handleChange}) =>{
                             id="dni"
                             name='dni'
                             label="DNI"
-                            helperText="Enter a Valid DNI"
+                            helperText="Enter a Valid DNI: 8 numbers and 1 letter, no spaces"
                             variant="standard"
                             onChange={handleChangeDNI}
                             fullWidth

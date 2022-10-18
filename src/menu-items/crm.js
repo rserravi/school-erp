@@ -12,7 +12,9 @@ import {
     ScheduleOutlined,
     TeamOutlined,
     HomeOutlined,
-    SolutionOutlined
+    SolutionOutlined,
+    CheckOutlined,
+    BarChartOutlined
 } from '@ant-design/icons';
 
 // icons
@@ -29,51 +31,45 @@ const icons = {
     ScheduleOutlined,
     TeamOutlined,
     HomeOutlined,
-    SolutionOutlined
+    SolutionOutlined,
+    CheckOutlined,
+    BarChartOutlined
 
 };
 
-// ==============================|| MENU ITEMS - UTILITIES ||============================== //
+// ==============================|| MENU ITEMS - CRM ||============================== //
 
-const utilities = {
-    id: 'utilities',
-    title: 'Principal',
+const crm = {
+    id: 'crm',
+    title: 'CRM',
     type: 'group',
     children: [
         {
-            id: 'agenda',
-            title: 'Agenda',
+            id: 'people',
+            title: 'People',
             type: 'item',
-            url: '/agenda',
-            icon: icons.ScheduleOutlined
+            url: '/people',
+            icon: icons.TeamOutlined,
+            breadcrumbs: false
            
         },
         {
-            id: 'staff',
-            title: 'Staff',
+            id: 'deals',
+            title: 'Deals',
             type: 'item',
-            url: '/staff',
-            icon: icons.TeamOutlined,
+            url: '/deals',
+            icon: icons.CheckOutlined,
             breadcrumbs: false
         },
         {
-            id: 'students',
-            title: 'Students',
+            id: 'analytics',
+            title: 'Analytics',
             type: 'item',
-            url: '/students',
-            icon: icons.SolutionOutlined,
+            url: '/analytics',
+            icon: icons.BarChartOutlined,
             breadcrumbs: false
-        },
-        {
-            id: 'school',
-            title: 'School',
-            type: 'item',
-            url: '/school',
-            icon: icons.HomeOutlined,
-            breadcrumbs: false
-
         }
     ]
 };
 
-export default utilities;
+export default crm;

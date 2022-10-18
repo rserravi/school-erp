@@ -1,39 +1,38 @@
 // =======================|| USAGE ||===========================//
 //                                                              //
 //      From parent component:                                  //
-//      <PhoneForm handleChange={handleChange} />                //
+//      <EmailForm handleChange={handleChange} />                //
 //      "handleChange" of parent will obtain KEY and VALUE      //
 //                                                              //
 //==============================================================//
 
 import React, { useEffect } from "react";
 import { Alert, Box, Button, FormControl, Grid, IconButton, InputLabel, MenuItem, Paper, Select, Typography } from "../../../node_modules/@mui/material/index";
-import AddIcCallRoundedIcon from '@mui/icons-material/AddIcCallRounded';
-import 'react-phone-number-input/style.css'
-import PhoneInput, {isValidPhoneNumber } from 'react-phone-number-input'
-
-export const PhoneForm = ({handleChange}) =>{
+import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
+import { isValidEmail } from "utils/validation-utils";
+import { CssTextField } from "./overrideCSS";
+export const EmailForm = ({handleChange}) =>{
     
 
 
-    const phoneArray = [
+    const emailArray = [
         {
             "id":0,
-            "name": "Mobile",
-            "telNum": ""
+            "name": "Home",
+            "emailAddress": ""
         }
 
     ];
 
-    const [phones, setPhones] = React.useState(phoneArray);
+    const [emails, setEmails] = React.useState(emailArray);
 
-    const ListItems = phones.map((element, index)=>{
+    const ListItems = emails.map((element, index)=>{
         
-        const handleChangeTel=(value)=>{
-            setPhones(
-                phones.map(item => 
+        const handleChangeEmail=(event)=>{
+            setEmails(
+                emails.map(item => 
                     item.id === index ? 
-                    {...item, "telNum": value }
+                    {...item, "emailAddress": event.target.value }
                     : item
                 )
             )
@@ -49,8 +48,8 @@ export const PhoneForm = ({handleChange}) =>{
 
             // Mapping, on the other hand, will rerender the useState
 
-            setPhones(
-                phones.map(item => 
+            setEmails(
+                emails.map(item => 
                     item.id === index ? 
                     {...item, "name": event.target.value }
                     : item
@@ -65,32 +64,32 @@ export const PhoneForm = ({handleChange}) =>{
                <Paper sx={{mr:1, mt:1, p:1}} key={index}>
                 <Grid item xs={12} sm={12} md={12} sx={{mt:2, mr:1}} >
                 <FormControl variant="standard" fullWidth sx={{  minWidth: 120 } }>
-                        <InputLabel id="telName">Phone Type</InputLabel>
+                        <InputLabel id="emailName">Email Type</InputLabel>
                             <Select
-                                labelId="telName"
-                                id="telName"
+                                labelId="emailName"
+                                id="emailName"
                                 onChange={handleChangeName}
-                                label="telName"
-                                value = {element.name}                            
+                                label="emailName"
+                                value = {element.name}
+                                                       
                                 >
-                                <MenuItem value={"Mobile"}>Mobile</MenuItem>
                                 <MenuItem value={"Home"}>Home</MenuItem>
                                 <MenuItem value={"Work"}>Work</MenuItem>
-                                <MenuItem value={"Whatsapp"}>Whatsapp</MenuItem>
-                                <MenuItem value={"Fax"}>Fax</MenuItem>
                                 <MenuItem value={"Other"}>Other</MenuItem>
                             </Select>
                             </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={12} md={12} sx={{mt:2, mr:4}} >
-                    <PhoneInput
-                        placeholder="Enter the phone number"
-                        value = {element.telNum}
-                        onChange={handleChangeTel}
+                <Grid item xs={12} sm={12} md={12} sx={{mt:2}} >
+                    <CssTextField
+                        placeholder="Enter a valid email address"
+                        value = {element.emailAddress}
+                        onChange={handleChangeEmail}
                         autoComplete='off'
+                        fullWidth
+                        size="small"  
                     />
                 </Grid>
-                {isValidPhoneNumber(element.telNum) ? <Alert severity="success">Valid Phone</Alert>: <Alert severity="error">Not a Valid Phone</Alert>}
+                {isValidEmail(element.emailAddress) ? <Alert severity="success">Valid Email</Alert>: <Alert severity="error">Not a Valid Email</Alert>}
                 </Paper> 
             </React.Fragment>
         )
@@ -98,24 +97,24 @@ export const PhoneForm = ({handleChange}) =>{
 
 
     const HandleAddNew = (event) =>{
-        const newPhone ={
-            "id": phones.length,
+        const newEmail ={
+            "id": emails.length,
             "name": "Other",
-            "telNum": ""
+            "emailAddress": ""
         }
-        setPhones([...phones, newPhone]) //Spread op or will not re-render
+        setEmails([...emails, newEmail]) //Spread op or will not re-render
         
     }
 
     useEffect(() => {
-        handleChange("phones", phones);
+        handleChange("emails", emails);
 
-    },[phones, handleChange]); 
+    },[emails, handleChange]); 
     
     return (
         <React.Fragment>
             <Typography sx={{mt:2}}>
-                Phones
+                Emails
             </Typography>
             <Grid container justifyContent="flex-start" alignItems="flex-start"> 
    
@@ -132,7 +131,7 @@ export const PhoneForm = ({handleChange}) =>{
                       }}
                 >  
                 <IconButton aria-label="call" color="primary" onClick={HandleAddNew}>
-                    <AddIcCallRoundedIcon />
+                    <EmailRoundedIcon />
                 </IconButton>
                     <Button onClick={HandleAddNew}>Add New</Button>
                 </Box>

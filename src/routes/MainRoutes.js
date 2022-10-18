@@ -25,6 +25,9 @@ const Equipment = Loadable(lazy(()=> import('pages/extra-pages/School-equipment'
 const Sessions = Loadable(lazy(()=> import('pages/extra-pages/School-sessions')));
 const Subjects = Loadable(lazy(()=> import('pages/extra-pages/School-subjects')));
 
+const People = Loadable(lazy(()=> import('pages/extra-pages/People-page')));
+const Leads = Loadable(lazy(()=> import('pages/extra-pages/people-leads')));
+
 
 const Setup = Loadable(lazy(()=> import('pages/extra-pages/Setup')));
 
@@ -102,6 +105,17 @@ const MainRoutes = {
             path: 'school/subjects',
             element: <Subjects />
         }
+        ,
+        {
+            path: 'people',
+            element: <People />
+        }
+        ,
+        {
+            path: 'people/leads',
+            element: <Leads />
+        }
+
 
     ]
 };

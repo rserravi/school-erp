@@ -1,7 +1,6 @@
 // material-ui
 //import { Typography } from '@mui/material';
-import { Button } from '../../../node_modules/@mui/material/index';
-import { Stack } from '../../../node_modules/@mui/material/index';
+import HorizontalNav from 'layout/MainLayout/HorizontalMenu/Horizontal-Menu';
 
 // project import
 //import MainCard from 'components/MainCard';
@@ -10,12 +9,8 @@ import { Stack } from '../../../node_modules/@mui/material/index';
 
 const AddStaff = () => (
     <>
-    <Stack direction="row" spacing={2}>
-        <Button href="/staff">Main</Button>
-        <Button variant="outlined">Add Staff</Button>
-        <Button href="/staff/see-staff">See Staff</Button>
-        <Button href="/staff/grades">Grades</Button>
-    </Stack>
+    <HorizontalNav type="staff" />
+
     </>
 );
 

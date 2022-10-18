@@ -1,4 +1,5 @@
 //import { Typography } from '@mui/material';
+import HorizontalNav from 'layout/MainLayout/HorizontalMenu/Horizontal-Menu';
 import { Button } from '../../../node_modules/@mui/material/index';
 import { Stack } from '../../../node_modules/@mui/material/index';
 
@@ -9,12 +10,7 @@ import { Stack } from '../../../node_modules/@mui/material/index';
 
 const SeeStudent = () => (
     <>
-    <Stack direction="row" spacing={2}>
-        <Button href="/students">Main</Button>
-        <Button href="/students/add-student">Add Student</Button>
-        <Button variant="outlined">See Students</Button>
-        <Button href="/students/grades">Grades</Button>
-    </Stack>
+    <HorizontalNav type="students" />
     </>
 );
 
