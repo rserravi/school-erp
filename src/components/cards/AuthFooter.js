@@ -15,9 +15,9 @@ const AuthFooter = () => {
                 textAlign={matchDownSM ? 'center' : 'inherit'}
             >
                 <Typography variant="subtitle2" color="secondary" component="span">
-                    &copy; Mantis React Dashboard Template By&nbsp;
+                    &copy; School ERP and CRM by &nbsp;
                     <Typography component={Link} variant="subtitle2" href="https://codedthemes.com" target="_blank" underline="hover">
-                        CodedThemes
+                        Ruben Serra
                     </Typography>
                 </Typography>
 
@@ -30,17 +30,17 @@ const AuthFooter = () => {
                         variant="subtitle2"
                         color="secondary"
                         component={Link}
-                        href="https://material-ui.com/store/contributors/codedthemes/"
+                        href="https://rubotic.com"
                         target="_blank"
                         underline="hover"
                     >
-                        MUI Templates
+                        RUBOTIC
                     </Typography>
                     <Typography
                         variant="subtitle2"
                         color="secondary"
                         component={Link}
-                        href="https://codedthemes.com"
+                        href="https://rubotic.com"
                         target="_blank"
                         underline="hover"
                     >
@@ -50,7 +50,7 @@ const AuthFooter = () => {
                         variant="subtitle2"
                         color="secondary"
                         component={Link}
-                        href="https://codedthemes.support-hub.io/"
+                        href="https://rubotic.com"
                         target="_blank"
                         underline="hover"
                     >

@@ -1,5 +1,5 @@
 //import { Typography } from '@mui/material';
-import { Avatar, Box, Button, Container, FormControlLabel, Grid, TextField, Link, Checkbox, Typography, Chip, Paper } from '../../../node_modules/@mui/material/index';
+import { Avatar, Box, Button, Container, FormControlLabel, Grid, TextField, Link, Checkbox, Typography, Chip, Paper } from '@mui/material/index';
 import { Stack } from '../../../node_modules/@mui/material/index';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
@@ -41,6 +41,7 @@ const AddStudent = () => {
 
     const handleChange = (key, value) =>{
         console.log("KEY", key, "VALUE", value)
+        
     }
     
     

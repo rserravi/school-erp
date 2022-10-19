@@ -4,6 +4,9 @@ import { lazy } from 'react';
 import Loadable from 'components/Loadable';
 import MinimalLayout from 'layout/MinimalLayout';
 
+// render - landingpage
+const LandingPage = Loadable(lazy(() => import('landing/landing-page')));
+
 // render - login
 const AuthLogin = Loadable(lazy(() => import('pages/authentication/Login')));
 const AuthRegister = Loadable(lazy(() => import('pages/authentication/Register')));
@@ -14,6 +17,10 @@ const LoginRoutes = {
     path: '/',
     element: <MinimalLayout />,
     children: [
+        {
+            path: '/',
+            element: <LandingPage />
+        },
         {
             path: 'login',
             element: <AuthLogin />

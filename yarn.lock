@@ -9586,71 +9586,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mantis-free-react-admin-template@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "mantis-free-react-admin-template@workspace:."
-  dependencies:
-    "@ant-design/colors": ^6.0.0
-    "@ant-design/icons": ^4.7.0
-    "@babel/core": ^7.19.1
-    "@babel/eslint-parser": ^7.19.1
-    "@emotion/cache": ^11.10.3
-    "@emotion/react": ^11.10.4
-    "@emotion/styled": ^11.10.4
-    "@mui/icons-material": ^5.10.9
-    "@mui/lab": ^5.0.0-alpha.100
-    "@mui/material": ^5.10.6
-    "@mui/styles": ^5.10.6
-    "@mui/x-data-grid": ^5.17.7
-    "@mui/x-date-pickers": ^5.0.4
-    "@reduxjs/toolkit": ^1.8.5
-    "@testing-library/jest-dom": ^5.16.5
-    "@testing-library/react": ^13.4.0
-    "@testing-library/user-event": ^14.4.3
-    apexcharts: ^3.35.5
-    eslint-config-airbnb-typescript: ^17.0.0
-    eslint-config-prettier: ^8.5.0
-    eslint-config-react-app: 7.0.1
-    eslint-import-resolver-typescript: 3.5.1
-    eslint-plugin-flowtype: ^8.0.3
-    eslint-plugin-import: ^2.26.0
-    eslint-plugin-jsx-a11y: 6.6.1
-    eslint-plugin-prettier: ^4.2.1
-    eslint-plugin-react: ^7.31.8
-    eslint-plugin-react-hooks: 4.6.0
-    formik: ^2.2.9
-    framer-motion: ^7.3.6
-    history: ^5.3.0
-    lodash: ^4.17.21
-    moment: ^2.29.4
-    prettier: 2.7.1
-    prop-types: ^15.8.1
-    react: ^18.2.0
-    react-apexcharts: ^1.4.0
-    react-copy-to-clipboard: ^5.1.0
-    react-device-detect: ^2.2.2
-    react-dom: ^18.2.0
-    react-draggable: ^4.4.5
-    react-element-to-jsx-string: ^15.0.0
-    react-image-file-resizer: ^0.4.8
-    react-number-format: ^4.9.4
-    react-perfect-scrollbar: ^1.5.8
-    react-phone-number-input: ^3.2.11
-    react-redux: ^8.0.4
-    react-router: ^6.4.1
-    react-router-dom: ^6.4.1
-    react-scripts: ^5.0.1
-    react-syntax-highlighter: ^15.5.0
-    react-webcam: ^7.0.1
-    react-window: ^1.8.7
-    redux: ^4.2.0
-    simplebar: ^5.3.8
-    simplebar-react: ^2.4.1
-    typescript: 4.8.3
-    web-vitals: ^3.0.2
-    yup: ^0.32.11
-  languageName: unknown
-  linkType: soft
+"markdown-to-jsx@npm:^7.1.7":
+  version: 7.1.7
+  resolution: "markdown-to-jsx@npm:7.1.7"
+  peerDependencies:
+    react: ">= 0.14.0"
+  checksum: b2c0ea7d0988fad0c709989b3b1b3a5600d1e80b60266f9618386f7afead4a6b5eba9ee1a3943df6a3dcb1599ea89e58467d1b17b6dd3af3c60984c60a85d06d
+  languageName: node
+  linkType: hard
 
 "mdn-data@npm:2.0.14":
   version: 2.0.14
@@ -11661,6 +11604,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"raw.macro@npm:^0.6.2":
+  version: 0.6.2
+  resolution: "raw.macro@npm:0.6.2"
+  peerDependencies:
+    babel-plugin-macros: ^2.8.0
+  peerDependenciesMeta:
+    babel-plugin-macros:
+      optional: true
+  checksum: 475a2d78006c2c179e8a67d4c65e2b53ce836e302ded9a38330d878f0652223fe537b9cab0f66ba495ee9f2068248c2e246b140724521285ae9f04b122e5fec2
+  languageName: node
+  linkType: hard
+
 "rc-util@npm:^5.9.4":
   version: 5.24.4
   resolution: "rc-util@npm:5.24.4"
@@ -12621,6 +12576,74 @@ __metadata:
   checksum: c843e92fdd1a5c145dbb6ffdae33e501867f9703afac67bdf35a685e49f85b1dcc10ea250033175a64bd9d31f0555bc6785b8359da0c90bcea30cf6dfbb55a8f
   languageName: node
   linkType: hard
+
+"school-erp@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "school-erp@workspace:."
+  dependencies:
+    "@ant-design/colors": ^6.0.0
+    "@ant-design/icons": ^4.7.0
+    "@babel/core": ^7.19.1
+    "@babel/eslint-parser": ^7.19.1
+    "@emotion/cache": ^11.10.3
+    "@emotion/react": ^11.10.4
+    "@emotion/styled": ^11.10.4
+    "@mui/icons-material": ^5.10.9
+    "@mui/lab": ^5.0.0-alpha.100
+    "@mui/material": ^5.10.6
+    "@mui/styles": ^5.10.6
+    "@mui/x-data-grid": ^5.17.7
+    "@mui/x-date-pickers": ^5.0.4
+    "@reduxjs/toolkit": ^1.8.5
+    "@testing-library/jest-dom": ^5.16.5
+    "@testing-library/react": ^13.4.0
+    "@testing-library/user-event": ^14.4.3
+    apexcharts: ^3.35.5
+    eslint-config-airbnb-typescript: ^17.0.0
+    eslint-config-prettier: ^8.5.0
+    eslint-config-react-app: 7.0.1
+    eslint-import-resolver-typescript: 3.5.1
+    eslint-plugin-flowtype: ^8.0.3
+    eslint-plugin-import: ^2.26.0
+    eslint-plugin-jsx-a11y: 6.6.1
+    eslint-plugin-prettier: ^4.2.1
+    eslint-plugin-react: ^7.31.8
+    eslint-plugin-react-hooks: 4.6.0
+    formik: ^2.2.9
+    framer-motion: ^7.3.6
+    history: ^5.3.0
+    lodash: ^4.17.21
+    markdown-to-jsx: ^7.1.7
+    moment: ^2.29.4
+    prettier: 2.7.1
+    prop-types: ^15.8.1
+    raw.macro: ^0.6.2
+    react: ^18.2.0
+    react-apexcharts: ^1.4.0
+    react-copy-to-clipboard: ^5.1.0
+    react-device-detect: ^2.2.2
+    react-dom: ^18.2.0
+    react-draggable: ^4.4.5
+    react-element-to-jsx-string: ^15.0.0
+    react-image-file-resizer: ^0.4.8
+    react-number-format: ^4.9.4
+    react-perfect-scrollbar: ^1.5.8
+    react-phone-number-input: ^3.2.11
+    react-redux: ^8.0.4
+    react-router: ^6.4.1
+    react-router-dom: ^6.4.1
+    react-scripts: ^5.0.1
+    react-syntax-highlighter: ^15.5.0
+    react-webcam: ^7.0.1
+    react-window: ^1.8.7
+    redux: ^4.2.0
+    simplebar: ^5.3.8
+    simplebar-react: ^2.4.1
+    typescript: 4.8.3
+    web-vitals: ^3.0.2
+    yup: ^0.32.11
+  languageName: unknown
+  linkType: soft
 
 "select-hose@npm:^2.0.0":
   version: 2.0.0

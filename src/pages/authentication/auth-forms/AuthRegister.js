@@ -33,6 +33,7 @@ import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 // ============================|| FIREBASE - REGISTER ||============================ //
 
 const AuthRegister = () => {
+    var jsonValues ={};
     const [level, setLevel] = useState();
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => {
@@ -73,6 +74,9 @@ const AuthRegister = () => {
                     try {
                         setStatus({ success: false });
                         setSubmitting(false);
+                        jsonValues = JSON.stringify(values, null,2);
+                        console.log(jsonValues);
+
                     } catch (err) {
                         console.error(err);
                         setStatus({ success: false });

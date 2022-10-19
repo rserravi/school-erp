@@ -1,3 +1,7 @@
+# Some technology used
+
+_October 18, 2022 by [Ruben Serra](/)_
+
 # SCHOOL-ERP
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
