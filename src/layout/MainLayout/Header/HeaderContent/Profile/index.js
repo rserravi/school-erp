@@ -28,6 +28,7 @@ import SettingTab from './SettingTab';
 // assets
 import avatar1 from 'assets/images/users/avatar-1.png';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
 
 // tab panel wrapper
 function TabPanel({ children, value, index, ...other }) {
@@ -62,6 +63,11 @@ const Profile = () => {
 
     const anchorRef = useRef(null);
     const [open, setOpen] = useState(false);
+    
+    const activeUser = useSelector(state => state.user)
+    const userName = activeUser.loggedUser.firstname + " " + activeUser.loggedUser.lastname;
+    const userCompany = activeUser.loggedUser.company
+
     const handleToggle = () => {
         setOpen((prevOpen) => !prevOpen);
     };
@@ -98,7 +104,7 @@ const Profile = () => {
             >
                 <Stack direction="row" spacing={2} alignItems="center" sx={{ p: 0.5 }}>
                     <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
-                    <Typography variant="subtitle1">John Doe</Typography>
+                    <Typography variant="subtitle1">{userName}</Typography>
                 </Stack>
             </ButtonBase>
             <Popper
@@ -141,9 +147,9 @@ const Profile = () => {
                                                     <Stack direction="row" spacing={1.25} alignItems="center">
                                                         <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
                                                         <Stack>
-                                                            <Typography variant="h6">John Doe</Typography>
+                                                            <Typography variant="h6">{userName}</Typography>
                                                             <Typography variant="body2" color="textSecondary">
-                                                                UI/UX Designer
+                                                                {userCompany}
                                                             </Typography>
                                                         </Stack>
                                                     </Stack>

@@ -13,7 +13,7 @@ import { Button, ButtonGroup } from '@mui/material/index';
 import  {peopleMenu, studentsMenu}  from 'menu-items/horitzontal-menu-items';
 import { staffMenu } from 'menu-items/horitzontal-menu-items';
 import { schoolMenu } from 'menu-items/horitzontal-menu-items';
-import { activeSubItem } from 'store/reducers/menu';
+import { activeSubItem } from 'store/reducers/menuSlice';
 import { errorMenu } from 'menu-items/horitzontal-menu-items';
 
 import { useDispatch, useSelector } from 'react-redux';

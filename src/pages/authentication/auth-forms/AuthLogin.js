@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { useNavigate} from "react-router-dom";
+
 
 // material-ui
 import {
@@ -28,11 +30,18 @@ import AnimateButton from 'components/@extended/AnimateButton';
 
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import { userLogin } from 'api/userApi';
+import { dispatch } from 'store/index';
+import { loginFail, loginSuccess } from 'store/reducers/loginSlice';
+import { getUserProfile } from 'store/actions/userAction';
+
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const AuthLogin = () => {
     const [checked, setChecked] = React.useState(false);
+
+    const navigation = useNavigate();
 
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => {
@@ -47,8 +56,8 @@ const AuthLogin = () => {
         <>
             <Formik
                 initialValues={{
-                    email: 'info@codedthemes.com',
-                    password: '123456',
+                    email: 'e@2.com',
+                    password: 'password2',
                     submit: null
                 }}
                 validationSchema={Yup.object().shape({
@@ -59,10 +68,25 @@ const AuthLogin = () => {
                     try {
                         setStatus({ success: false });
                         setSubmitting(false);
+                        const isAuth = await userLogin(values);
+                        console.log(isAuth)
+
+                        if(isAuth.status === "error"){
+                            return dispatch(loginFail(isAuth.message));
+                        }
+                        else{
+                            navigation("/dashboard/default")
+                            dispatch (getUserProfile());
+                            return dispatch (loginSuccess())
+                        }                        
+         
+
                     } catch (err) {
                         setStatus({ success: false });
                         setErrors({ submit: err.message });
                         setSubmitting(false);
+                        dispatch(loginFail(err.message));
+
                     }
                 }}
             >
