@@ -24,8 +24,7 @@ import NoAuth from 'pages/system/noAuth';
 const MainLayout = () => {
     const theme = useTheme();
     const matchDownLG = useMediaQuery(theme.breakpoints.down('xl'));
-    const dispatch = useDispatch();
-    
+    const dispatch = useDispatch();    
 
     const { drawerOpen } = useSelector((state) => state.menu);
     const {isAuth} = useSelector(state => state.login)

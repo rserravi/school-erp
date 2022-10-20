@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
 
+
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import {
@@ -29,6 +30,9 @@ import SettingTab from './SettingTab';
 import avatar1 from 'assets/images/users/avatar-1.png';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
+import { dispatch } from 'store/index';
+import { userLogout } from 'api/userApi';
+import { useNavigate } from 'react-router-dom/dist/index';
 
 // tab panel wrapper
 function TabPanel({ children, value, index, ...other }) {
@@ -57,8 +61,15 @@ function a11yProps(index) {
 const Profile = () => {
     const theme = useTheme();
 
+    const navigate = useNavigate();
+
     const handleLogout = async () => {
         // logout
+        console.log("Log Out")
+        sessionStorage.removeItem("accessJWT");
+        await userLogout().then(()=>{navigate("/")}).catch((err)=>{alert(err)})
+        
+        
     };
 
     const anchorRef = useRef(null);

@@ -11,7 +11,8 @@ This is the main roadmap
 | Create main frontend skeleton (logins and main layouts) | Done |
 | Create main backend, databases, user API and tokens API | Done |
 | Create landing page | Done |
-| Integrate login, register, recover pass and logout with backend | In Progress |
+| Integrate login, register,and logout with backend | Done |
+| Recover password | To Do |
 | Create form components for persons | Done |
 
 &nbsp; 
@@ -31,7 +32,7 @@ Only the admin can create other admins.
 | --------------------------------------------------------------------------| -------- |
 | Create company form and registration form   | in progress |
 | Create User and company linking in backend | To Do |
-| Create system for private routes | To Do |
+| Create system for private routes | Done |
 
 &nbsp; 
 
