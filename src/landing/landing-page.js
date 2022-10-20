@@ -62,8 +62,6 @@ const featuredPosts = [
 
 const posts = [post1, post2];
 
-console.log(post1)
-
 const sidebar = {
   title: 'About',
   description:

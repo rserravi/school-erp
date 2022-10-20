@@ -9901,6 +9901,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mui-image@npm:^1.0.7":
+  version: 1.0.7
+  resolution: "mui-image@npm:1.0.7"
+  peerDependencies:
+    "@emotion/react": ^11.4.1
+    "@emotion/styled": ^11.3.0
+    "@mui/material": ^5.0.1
+    prop-types: ^15.7.2
+    react: ^17.0.2 || ^18.0.0
+  checksum: 7512777d0a83a108a9403f4175874f07d65a31282d33e4cb8334af8242ae5827c478b73cd7adce727a75a73c8ca76f236781881f74e6c303e81e1bfcca232512
+  languageName: node
+  linkType: hard
+
 "multicast-dns@npm:^7.2.5":
   version: 7.2.5
   resolution: "multicast-dns@npm:7.2.5"
@@ -12645,6 +12658,7 @@ __metadata:
     lodash: ^4.17.21
     markdown-to-jsx: ^7.1.7
     moment: ^2.29.4
+    mui-image: ^1.0.7
     prettier: 2.7.1
     prop-types: ^15.8.1
     raw.macro: ^0.6.2

@@ -89,7 +89,7 @@ export const fetchUser = () =>{
 export const fetchNewAccessJWT = () =>{
     return new Promise( async(resolve, reject)=>{
         try {
-            const {refreshJWT} = JSON.parse(localStorage.getItem("crmSite"));
+            const {refreshJWT} = JSON.parse(localStorage.getItem("schoolERP"));
             if (!refreshJWT){
                 reject("Token not found!");
             }
@@ -106,7 +106,7 @@ export const fetchNewAccessJWT = () =>{
             
         } catch (error) {
             if (error.message === "Request failed with status code 403"){
-                localStorage.removeItem("crmSite");
+                localStorage.removeItem("schoolERP");
             }
             reject(false);
         }

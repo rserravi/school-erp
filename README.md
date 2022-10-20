@@ -31,3 +31,4 @@ In the **frontend** we are using:
 - markdown-to-jsx - https://yarnpkg.com/package/markdown-to-jsx - Convert markdown to JSX with ease for React and React-like projects. Super lightweight and highly configurable.
 - raw-macro - - Webpack raw-loader implemented as babel-plugin-macros and SWC plugins
 - axios - https://yarnpkg.com/package/axios - Promise based HTTP client for the browser and node.js
+- mui-image - https://www.npmjs.com/package/mui-image- Display images as per the Material guidelines. For React apps using Material-UI v5.
