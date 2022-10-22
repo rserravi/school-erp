@@ -27,3 +27,49 @@ export const strengthIndicator = (number) => {
     if (hasMixed(number)) strengths += 1;
     return strengths;
 };
+
+// create an strong password. Pass a passLenght of 8 or more.
+export const passwordCreator = (passLenght) =>{
+
+    // define character set
+    const lowCase = "abcdefghijklmnopqrstuvxyz";
+    const upCase = "ABCDEFGHIJKLMNOPQRSTUVXYZ";
+    const Numbers = "0123456789";
+    const SpecialChar = "£$&()*+[]@#^-_!?";
+    const charCategories = 4;
+
+    // initialize password
+    let password = "";
+
+    for (var i=1; i < passLenght+1; i++) {
+        const chooseCharGroup = Math.floor(Math.random() * (charCategories))
+        switch (chooseCharGroup) {
+            case 0:
+                const index0 = Math.floor(Math.random() * (lowCase.length-1))
+                password = password + lowCase[index0];
+                break;
+            case 1:
+                const index1 = Math.floor(Math.random() * (upCase.length-1))
+                password = password + upCase[index1];
+                break;
+            case 2:
+                const index2 = Math.floor(Math.random() * (Numbers.length-1))
+                password = password + Numbers[index2];
+                break;
+            case 3:
+                const index3 = Math.floor(Math.random() * (SpecialChar.length-1))
+                password = password + SpecialChar[index3];
+            
+                break;
+        
+            default:
+                break;
+        }
+    }
+
+    console.log(password)
+
+    return password
+
+
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useNavigate} from "react-router-dom";
-
+import { useSelector } from 'react-redux';
 
 // material-ui
 import {
@@ -34,6 +34,7 @@ import { userLogin } from 'api/userApi';
 import { dispatch } from 'store/index';
 import { loginFail, loginSuccess } from 'store/reducers/loginSlice';
 import { getUserProfile } from 'store/actions/userAction';
+import { Alert, LinearProgress } from '@mui/material/index';
 
 
 // ============================|| FIREBASE - LOGIN ||============================ //
@@ -42,6 +43,7 @@ const AuthLogin = () => {
     const [checked, setChecked] = React.useState(false);
 
     const navigation = useNavigate();
+    const loginStore = useSelector(state => state.login)
 
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => {
@@ -51,6 +53,7 @@ const AuthLogin = () => {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
 
     return (
         <>
@@ -163,7 +166,7 @@ const AuthLogin = () => {
                                         }
                                         label={<Typography variant="h6">Keep me sign in</Typography>}
                                     />
-                                    <Link variant="h6" component={RouterLink} to="" color="text.primary">
+                                    <Link variant="h6" component={RouterLink} to="../forgotten-password" color="text.primary">
                                         Forgot Password?
                                     </Link>
                                 </Stack>
@@ -187,6 +190,10 @@ const AuthLogin = () => {
                                         Login
                                     </Button>
                                 </AnimateButton>
+                            </Grid>
+                            <Grid item xs={12}>
+                                {loginStore.error?<Alert severity="error">{loginStore.error}</Alert>:<></>}
+                                {loginStore.isLoading?<LinearProgress />: <></>}
                             </Grid>
                             <Grid item xs={12}>
                                 <Divider>

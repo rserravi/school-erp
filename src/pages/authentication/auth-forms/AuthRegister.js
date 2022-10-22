@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // material-ui
 import {
@@ -29,13 +30,18 @@ import { strengthColor, strengthIndicator } from 'utils/password-strength';
 
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import { dispatch } from 'store/index';
+import { userRegistration } from 'store/actions/registerActions';
+import { Alert, LinearProgress } from '../../../../node_modules/@mui/material/index';
 
 // ============================|| FIREBASE - REGISTER ||============================ //
 
 const AuthRegister = () => {
     var jsonValues ={};
-    const [level, setLevel] = useState();
+    const [level, setLevel] = useState( { label: 'Strong', color: 'success.dark' });
     const [showPassword, setShowPassword] = useState(false);
+    const registerStore = useSelector(state => state.registration)
+
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
     };
@@ -74,6 +80,7 @@ const AuthRegister = () => {
                     try {
                         setStatus({ success: false });
                         setSubmitting(false);
+                        dispatch(userRegistration(values))
                         jsonValues = JSON.stringify(values, null,2);
                         console.log(jsonValues);
 
@@ -255,6 +262,10 @@ const AuthRegister = () => {
                                         Create Account
                                     </Button>
                                 </AnimateButton>
+                            </Grid>
+                            <Grid item xs={12}>
+                                {registerStore.status==="error"?<Alert severity="error">{registerStore.message}</Alert>:<></>}
+                                {registerStore.isLoading?<LinearProgress />: <></>}
                             </Grid>
                             <Grid item xs={12}>
                                 <Divider>

@@ -6,6 +6,7 @@ const userProfileUrl = rootUrl + "/user";
 const logOutUrl = rootUrl + "/user/logout";
 const newAccessJWTurl = rootUrl + "/tokens";
 const userVerificationUrl = userProfileUrl + "/verify"
+const recoverUrl = userProfileUrl + "/reset-password"
 
 export const userLogin = (frmData) =>{
     return new Promise( async(resolve, reject)=>{
@@ -46,6 +47,7 @@ export const userRegistrationAPI = (frmData) =>{
 export const userRegistrationVerification = (frmData) =>{
     return new Promise( async(resolve, reject)=>{
         try {
+            console.log("Datos en userRegistration", frmData)
             const res = await axios.patch(userVerificationUrl, frmData);
 
             resolve(res.data);
@@ -128,4 +130,39 @@ export const userLogout = async() =>{
     } catch (error) {
         console.log(error);
     }
+}
+
+export const RecoverPassword = (frmData) =>{
+
+    return new Promise( async(resolve, reject)=>{
+        try {
+            const res = await axios.post(recoverUrl, frmData);
+            resolve(res.data);
+   
+            if(res.data.status ==="success"){
+               resolve(res.data)
+            }
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+
+export const CheckRecoverPin = (frmData)=>{
+    return new Promise( async(resolve, reject)=>{
+        try {
+            console.log("Datos en checkRecoverPin", frmData)
+            const res = await axios.patch(recoverUrl, frmData);
+
+            resolve(res.data);
+            console.log("Status en checkRecoverPin");
+            console.log(res.data);
+            if(res.data.status ==="success"){
+               resolve(res.data)
+            }
+        } catch (error) {
+            console.log("Error en checkRecoverPin");
+            reject({status:"error", message:error.error});
+        }
+    })
 }

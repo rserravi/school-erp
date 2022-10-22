@@ -30,7 +30,6 @@ import SettingTab from './SettingTab';
 import avatar1 from 'assets/images/users/avatar-1.png';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
-import { dispatch } from 'store/index';
 import { userLogout } from 'api/userApi';
 import { useNavigate } from 'react-router-dom/dist/index';
 
