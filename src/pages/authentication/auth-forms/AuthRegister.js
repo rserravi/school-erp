@@ -265,6 +265,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12}>
                                 {registerStore.status==="error"?<Alert severity="error">{registerStore.message}</Alert>:<></>}
+                                {registerStore.status==="success"?<Alert severity="success">{registerStore.message}</Alert>:<></>}
                                 {registerStore.isLoading?<LinearProgress />: <></>}
                             </Grid>
                             <Grid item xs={12}>

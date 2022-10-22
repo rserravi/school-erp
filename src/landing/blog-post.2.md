@@ -12,7 +12,7 @@ This is the main roadmap
 | Create main backend, databases, user API and tokens API | Done |
 | Create landing page | Done |
 | Integrate login, register,and logout with backend | Done |
-| Recover password | To Do |
+| Recover password | Done |
 | Create form components for persons | Done |
 
 &nbsp; 

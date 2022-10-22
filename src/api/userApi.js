@@ -14,6 +14,7 @@ export const userLogin = (frmData) =>{
             const res = await axios.post(loginUrl, frmData);
 
             resolve(res.data);
+            console.log("RESPUESTA DEL SERVIDOR AL LOGIN",res.data)
 
             if(res.data.status ==="success"){
                 sessionStorage.setItem("accessJWT", res.data.accessJWT);
@@ -101,7 +102,7 @@ export const fetchNewAccessJWT = () =>{
                 }
             });
             if(res.data.status ==="success"){
-                console.log(res.data)
+                console.log("NEW ACCESSJWT TOKEN FETCHED",res.data)
                 sessionStorage.setItem("accessJWT", res.data.accessJWT);   
             } 
             resolve(true);

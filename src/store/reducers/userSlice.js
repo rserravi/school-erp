@@ -26,9 +26,17 @@ const user = createSlice({
            state.isloading = false;
            state.error = payload;
        },
+       resetUser: (state)=>{
+           localStorage.removeItem("schoolERP");
+           sessionStorage.removeItem("accessJWT");
+           state.loggedUser = {}
+           state.company = {}
+           state.isloading = false
+           state.error = ""
+       }
    }
 });
  
 export default user.reducer;
 
-export const{getUserPending,getUserSuccess, getUserFail}= user.actions;
+export const{getUserPending,getUserSuccess, getUserFail, resetUser}= user.actions;

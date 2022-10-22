@@ -32,6 +32,8 @@ import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons
 import { useSelector } from 'react-redux';
 import { userLogout } from 'api/userApi';
 import { useNavigate } from 'react-router-dom/dist/index';
+import { dispatch } from 'store/index';
+import { resetUser } from 'store/reducers/userSlice';
 
 // tab panel wrapper
 function TabPanel({ children, value, index, ...other }) {
@@ -65,8 +67,12 @@ const Profile = () => {
     const handleLogout = async () => {
         // logout
         console.log("Log Out")
-        sessionStorage.removeItem("accessJWT");
-        await userLogout().then(()=>{navigate("/")}).catch((err)=>{alert(err)})
+       
+        await userLogout()
+            .then(()=>{
+                dispatch(resetUser())
+                navigate("/")
+            }).catch((err)=>{alert(err)})
         
         
     };

@@ -72,15 +72,17 @@ const AuthLogin = () => {
                         setStatus({ success: false });
                         setSubmitting(false);
                         const isAuth = await userLogin(values);
-                        console.log(isAuth)
+                        console.log("IS AUTH? ",isAuth)
 
-                        if(isAuth.status === "error"){
-                            return dispatch(loginFail(isAuth.message));
-                        }
-                        else{
+                        if(isAuth.status === "success"){
                             navigation("/dashboard/default")
                             dispatch (getUserProfile());
                             return dispatch (loginSuccess())
+                        }
+                        else{
+                            console.log("IS AUTH MESSAGE", isAuth.message)
+                            return dispatch(loginFail(isAuth.message))
+                            
                         }                        
          
 
