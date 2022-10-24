@@ -75,7 +75,7 @@ export class Social {
     }
 }
 
-class Person {
+export class Person {
     id= "";
     firstname="";
     lastname="";
@@ -98,7 +98,7 @@ class Person {
         this.birthdate = birthdate;
         this.legalTutor = legalTutor;
         this.genre = genre;
-        if (this.checkDNI){this.dni=dni}
+        this.dni=dni;
         this.phone = phone;
         this.email = email;
         this.address= address;
@@ -149,13 +149,13 @@ class Person {
 
 }
 
-Occupation = {
+const Occupation = {
     Teacher: "teacher",
     Admin: "admin",
     Other: "other"
 }
 
-PaymentTiming = {
+const PaymentTiming = {
     Occasion: "occasion",
     Weekly: "weekly",
     Monthly: "monthly",

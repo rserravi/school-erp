@@ -28,12 +28,13 @@ import SettingTab from './SettingTab';
 
 // assets
 import avatar1 from 'assets/images/users/avatar-1.png';
-import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 import { userLogout } from 'api/userApi';
 import { useNavigate } from 'react-router-dom/dist/index';
 import { dispatch } from 'store/index';
 import { resetUser } from 'store/reducers/userSlice';
+import CircularProgressWithLabel from 'pages/components-overview/CircularProgressWithLabel';
 
 // tab panel wrapper
 function TabPanel({ children, value, index, ...other }) {
@@ -82,7 +83,7 @@ const Profile = () => {
     
     const activeUser = useSelector(state => state.user)
     const userName = activeUser.loggedUser.firstname + " " + activeUser.loggedUser.lastname;
-    const userCompany = activeUser.loggedUser.company
+    const userCompany = activeUser.loggedUser.company.name
 
     const handleToggle = () => {
         setOpen((prevOpen) => !prevOpen);
@@ -171,9 +172,8 @@ const Profile = () => {
                                                     </Stack>
                                                 </Grid>
                                                 <Grid item>
-                                                    <IconButton size="large" color="secondary" onClick={handleLogout}>
-                                                        <LogoutOutlined />
-                                                    </IconButton>
+                                                    <CircularProgressWithLabel value={activeUser.loggedUser.isCompleted} />
+
                                                 </Grid>
                                             </Grid>
                                         </CardContent>

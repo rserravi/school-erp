@@ -4,7 +4,6 @@ import { lazy } from 'react';
 import Loadable from 'components/Loadable';
 import MinimalLayout from 'layout/MinimalLayout';
 
-
 // render - landingpage
 const LandingPage = Loadable(lazy(() => import('landing/landing-page')));
 
@@ -14,6 +13,10 @@ const AuthRegister = Loadable(lazy(() => import('pages/authentication/Register')
 const UserVerification = Loadable(lazy(() => import('pages/authentication/UserVerification')));
 const ForgottenPass = Loadable(lazy(() => import('pages/authentication/ForgottenPass')));
 const RecoverPass = Loadable(lazy(()=> import( 'pages/authentication/Recovery')));
+const TestClasses = Loadable(lazy(()=> import( 'pages/system/testClasses')));
+const NoAuth = Loadable(lazy(()=> import( 'pages/system/noAuth')));
+const NoVerified = Loadable(lazy(()=> import( 'pages/system/noVerified')));
+
 
 // ==============================|| AUTH ROUTING ||============================== //
 
@@ -36,6 +39,18 @@ const LoginRoutes = {
         {
             path: 'forgotten-password',
             element: <ForgottenPass />
+        },
+        {
+            path: 'test-classes',
+            element: <TestClasses />
+        },
+        {
+            path: 'noAuthorized',
+            element: <NoAuth />
+        },
+        {
+            path: 'noVerified',
+            element: <NoVerified />
         },
         {
             path: 'verification',

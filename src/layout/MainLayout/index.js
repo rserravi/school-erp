@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -18,6 +19,8 @@ import { loginSuccess } from 'store/reducers/loginSlice';
 import { fetchNewAccessJWT } from 'api/userApi';
 import { getUserProfile } from 'store/actions/userAction';
 import NoAuth from 'pages/system/noAuth';
+import NoVerified from 'pages/system/noVerified';
+import NoComplete from 'pages/system/noComplete';
 
 // ==============================|| MAIN LAYOUT ||============================== //
 
@@ -28,6 +31,7 @@ const MainLayout = () => {
 
     const { drawerOpen } = useSelector((state) => state.menu);
     const {isAuth} = useSelector(state => state.login)
+    const {isCompleted, isVerified} = useSelector(state =>state.user.loggedUser)
     var firstLoad = true;
 
 
@@ -74,16 +78,21 @@ const MainLayout = () => {
     return (
     <React.Fragment>
         {isAuth?(
-            <Box sx={{ display: 'flex', width: '100%' }}>
-                <Header open={open} handleDrawerToggle={handleDrawerToggle} />
-                <Drawer open={open} handleDrawerToggle={handleDrawerToggle} />
-                <Box component="main" sx={{ width: '100%', flexGrow: 1, p: { xs: 2, sm: 3 } }}>
-                    <Toolbar />
-                    <Breadcrumbs navigation={navigation} title titleBottom card={false} divider={false} />
-                    <Outlet />
+            isVerified?(
+                isCompleted>80?(
+                <Box sx={{ display: 'flex', width: '100%' }}>
+                    <Header open={open} handleDrawerToggle={handleDrawerToggle} />
+                    <Drawer open={open} handleDrawerToggle={handleDrawerToggle} />
+                    <Box component="main" sx={{ width: '100%', flexGrow: 1, p: { xs: 2, sm: 3 } }}>
+                        <Toolbar />
+                        <Breadcrumbs navigation={navigation} title titleBottom card={false} divider={false} />
+                        <Outlet />
+                    </Box>
                 </Box>
-            </Box>
-        ):(<NoAuth/>)}
+                ):(<NoComplete />)
+            ):(<NoVerified />)): //??? USAR NAVIGATE POR SEGURIDAD???
+        (<NoAuth />)
+        }
         
     </React.Fragment>
      )

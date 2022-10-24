@@ -63,7 +63,7 @@ export const NameForm = ({handleChange}) =>{
         <React.Fragment>
             <Box sx={{ display: 'flex', flexDirection: 'column', width:'100%' }}>
                 <Grid container justifyContent="flex-start" alignItems="flex-start"> 
-                    <Grid item xs={12} sm={5} md={5} sx={{mt:2, mr:1}} >
+                    <Grid item xs={12} sm={12} md={12} sx={{mt:2, mr:1}} >
                         <TextField
                         id="firstname"
                         name='firstname'
@@ -77,7 +77,7 @@ export const NameForm = ({handleChange}) =>{
                         sx = {{mr:2}}
                         />
                     </Grid>
-                    <Grid item xs={12} sm={6} md={6} sx={{mt:2, mr:1}} >
+                    <Grid item xs={12} sm={12} md={12} sx={{mt:2, mr:1}} >
                         <TextField
                         id="lastname"
                         name="lastname"
@@ -92,7 +92,7 @@ export const NameForm = ({handleChange}) =>{
                         />
                     </Grid>
                
-                    <Grid item xs={9} sm={2} md={2} sx={{mt:2, mr:1}} >
+                    <Grid item xs={6} sm={6} md={6} sx={{mt:2, mr:1}} >
                     <LocalizationProvider dateAdapter={AdapterMoment}>
                             <DatePicker
                                 label="Birthdate"
@@ -104,10 +104,10 @@ export const NameForm = ({handleChange}) =>{
                             />
                         </LocalizationProvider>
                     </Grid>
-                    <Grid item  xs={3} sm={2} md={2} sx={{mt:2, mr:1, textAlign:"center"}}>
+                    <Grid item  xs={5} sm={5} md={5} sx={{mt:2, mr:1, textAlign:"center"}}>
                         {age<18?age===0?<Alert severity="error">Enter a bithdate</Alert>:<Alert severity="warning">{age} years Old. Needs Legal Tutor</Alert>:<Alert severity="success">{age} years Old</Alert>}
                     </Grid>
-                    <Grid item xs={12} sm={2} md={2} sx={{mt:2, mr:1}} >
+                    <Grid item xs={8} sm={8} md={8} sx={{mt:2, mr:1}} >
                         <FormControl variant="standard" fullWidth sx={{  minWidth: 120 } }>
                         <InputLabel id="gender">Gender</InputLabel>
                             <Select
@@ -124,7 +124,7 @@ export const NameForm = ({handleChange}) =>{
                             </Select>
                             </FormControl>
                     </Grid>
-                    <Grid item xs={12} sm={3} md={3} sx={{mt:2, mr:1}} >
+                    <Grid item xs={6} sm={6} md={6} sx={{mt:2, mr:1}} >
                         <TextField
                             id="dni"
                             name='dni'
@@ -140,7 +140,7 @@ export const NameForm = ({handleChange}) =>{
                             />
                             
                     </Grid>
-                    <Grid item xs={12} sm={2} md={2} sx={{mt:2, mr:1}} >
+                    <Grid item xs={5} sm={5} md={5} sx={{mt:2, mr:1}} >
                         {validatedDNI?<Alert severity='success'>Correct DNI</Alert>:<Alert severity='error'>Enter a valid Id</Alert>}
                     </Grid>
                     <Grid item xs={12} sm={5} md={5} sx={{mt:2, mr:1}} >

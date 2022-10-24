@@ -54,7 +54,6 @@ const AuthLogin = () => {
         event.preventDefault();
     };
 
-
     return (
         <>
             <Formik
@@ -72,20 +71,29 @@ const AuthLogin = () => {
                         setStatus({ success: false });
                         setSubmitting(false);
                         const isAuth = await userLogin(values);
-                        console.log("IS AUTH? ",isAuth)
 
                         if(isAuth.status === "success"){
-                            navigation("/dashboard/default")
-                            dispatch (getUserProfile());
-                            return dispatch (loginSuccess())
+                            const user = dispatch (getUserProfile());
+                            console.log("USER EN LOGIN", user)
+                            user.then((data)=>{
+                                 console.log("USER FETCHED. IS COMPLETED? ", data.payload.isCompleted)
+                                 navigation("/dashboard/default")
+                                
+                                })
+                                .catch((err)=>{
+                                    console.log("ERR", err)
+                                    setStatus({ success: false });
+                                    setErrors({ submit: err.message });
+                                    setSubmitting(false);
+                                    dispatch(loginFail(err.message));
+                                })
+                           
                         }
                         else{
-                            console.log("IS AUTH MESSAGE", isAuth.message)
                             return dispatch(loginFail(isAuth.message))
                             
                         }                        
          
-
                     } catch (err) {
                         setStatus({ success: false });
                         setErrors({ submit: err.message });
