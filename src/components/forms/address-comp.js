@@ -6,30 +6,18 @@
 //                                                              //
 //==============================================================//
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Box, Button, FormControl, Grid, IconButton, InputLabel, MenuItem, Paper, Select, Typography } from "../../../node_modules/@mui/material/index";
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import { countries } from "utils/validation-utils";
 import { CssMenuItem, CssTextField } from "./overrideCSS";
-export const AddressForm = ({handleChange}) =>{
+export const AddressForm = ({handleChange, user}) =>{
     
 
 
-    const emailArray = [
-        {
-            "id":0,
-            "name": "Home",
-            "streetAddress": "",
-            "cityAddress":"",
-            "stateProvinceAddress":"",
-            "postcodeAddress":"",
-            "countryAddress":"",
-            
-        }
+    const addressArray = user.address;
 
-    ];
-
-    const [address, setAddress] = React.useState(emailArray);
+    const [address, setAddress] = React.useState(addressArray);
 
     const ListItems = address.map((element, index)=>{
         
@@ -41,6 +29,7 @@ export const AddressForm = ({handleChange}) =>{
                     : item
                 )
             )
+            handleChange("address", address);
         }
 
         const handleChangeCityAddress=(event)=>{
@@ -51,6 +40,7 @@ export const AddressForm = ({handleChange}) =>{
                     : item
                 )
             )
+            handleChange("address", address);
         }
 
         const handleChangeStateAddress=(event)=>{
@@ -61,6 +51,7 @@ export const AddressForm = ({handleChange}) =>{
                     : item
                 )
             )
+            handleChange("address", address);
         }
 
 
@@ -72,6 +63,7 @@ export const AddressForm = ({handleChange}) =>{
                     : item
                 )
             )
+            handleChange("address", address);
         }
 
         const handleChangeCountryAddress=(event)=>{
@@ -82,6 +74,7 @@ export const AddressForm = ({handleChange}) =>{
                     : item
                 )
             )
+            handleChange("address", address);
             console.log("ON CHANGE",  event.target.value, event.target.inputValue)
         }
 
@@ -94,6 +87,7 @@ export const AddressForm = ({handleChange}) =>{
                     : item
                 )
             )
+            handleChange("address", address);
         }
 
         return(
@@ -200,10 +194,10 @@ export const AddressForm = ({handleChange}) =>{
         
     }
 
-    useEffect(() => {
+  /*   useEffect(() => {
         handleChange("address", address);
 
-    },[address, handleChange]); 
+    },[address, handleChange]);  */
     
     return (
         <React.Fragment>

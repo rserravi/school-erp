@@ -6,24 +6,16 @@
 //                                                              //
 //==============================================================//
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Alert, Box, Button, FormControl, Grid, IconButton, InputLabel, MenuItem, Paper, Select, Typography } from "../../../node_modules/@mui/material/index";
 import AddIcCallRoundedIcon from '@mui/icons-material/AddIcCallRounded';
 import 'react-phone-number-input/style.css'
 import PhoneInput, {isValidPhoneNumber } from 'react-phone-number-input'
 
-export const PhoneForm = ({handleChange}) =>{
+export const PhoneForm = ({handleChange, user})=>{
     
-
-
-    const phoneArray = [
-        {
-            "id":0,
-            "name": "Mobile",
-            "telNum": ""
-        }
-
-    ];
+    const phoneArray = user.phones
+        
 
     const [phones, setPhones] = React.useState(phoneArray);
 
@@ -37,6 +29,7 @@ export const PhoneForm = ({handleChange}) =>{
                     : item
                 )
             )
+            handleChange("phones", phones);
         }
 
         const handleChangeName=(event)=>{
@@ -49,6 +42,7 @@ export const PhoneForm = ({handleChange}) =>{
 
             // Mapping, on the other hand, will rerender the useState
 
+
             setPhones(
                 phones.map(item => 
                     item.id === index ? 
@@ -56,6 +50,7 @@ export const PhoneForm = ({handleChange}) =>{
                     : item
                 )
             )
+            handleChange("phones", phones);
             
         }
 
@@ -90,7 +85,12 @@ export const PhoneForm = ({handleChange}) =>{
                         autoComplete='off'
                     />
                 </Grid>
-                {isValidPhoneNumber(element.telNum) ? <Alert severity="success">Valid Phone</Alert>: <Alert severity="error">Not a Valid Phone</Alert>}
+                    { typeof element.telNum==="string"? 
+                        isValidPhoneNumber(element.telNum) ? 
+                            <Alert severity="success">Valid Phone</Alert>: 
+                            <Alert severity="error">Not a Valid Phone</Alert>
+                        :<Alert severity="error">Not a Valid Phone</Alert>
+                    }
                 </Paper> 
             </React.Fragment>
         )
@@ -106,11 +106,11 @@ export const PhoneForm = ({handleChange}) =>{
         setPhones([...phones, newPhone]) //Spread op or will not re-render
         
     }
-
+/* 
     useEffect(() => {
         handleChange("phones", phones);
 
-    },[phones, handleChange]); 
+    },[phones, handleChange]);  */
     
     return (
         <React.Fragment>

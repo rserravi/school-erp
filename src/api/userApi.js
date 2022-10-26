@@ -167,3 +167,29 @@ export const CheckRecoverPin = (frmData)=>{
         }
     })
 }
+
+export const UserUpdate = (data) =>{
+    const config = {
+        headers:{
+            "Content-Type": "application/json"
+        }
+      };
+      
+    const frmData= JSON.stringify(data)
+    //console.log("UserUpdate", userProfileUrl, data, frmData)
+    return new Promise( async(resolve, reject)=>{
+        try {
+            const res = await axios.patch(userProfileUrl, frmData, config);
+            console.log(res.data)
+            resolve(res.data);
+            //console.log("Status en updateUser");
+            //console.log(res.data);
+            if(res.data.status ==="success"){
+               resolve(res.data)
+            }
+        } catch (error) {
+            console.log("Error en updateUser");
+            reject({status:"error", message:error.error});
+        }
+    })
+}

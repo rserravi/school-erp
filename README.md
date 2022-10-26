@@ -32,3 +32,4 @@ In the **frontend** we are using:
 - raw-macro - - Webpack raw-loader implemented as babel-plugin-macros and SWC plugins
 - axios - https://yarnpkg.com/package/axios - Promise based HTTP client for the browser and node.js
 - mui-image - https://www.npmjs.com/package/mui-image- Display images as per the Material guidelines. For React apps using Material-UI v5.
+- underscore.js -https://yarnpkg.com/package/underscore - JavaScript's functional programming helper library.

@@ -6,22 +6,15 @@
 //                                                              //
 //==============================================================//
 
-import React, { useEffect } from "react";
-import { Alert, Box, Button, FormControl, Grid, IconButton, InputLabel, MenuItem, Paper, Select, Typography } from "../../../node_modules/@mui/material/index";
+import React from "react";
+import { Box, Button, FormControl, Grid, IconButton, InputLabel, MenuItem, Paper, Select, Typography } from "../../../node_modules/@mui/material/index";
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import { CssTextField } from "./overrideCSS";
-export const SocialForm = ({handleChange}) =>{
+export const SocialForm = ({handleChange, user}) =>{
     
 
-    const socialArray = [
-        {
-            "id":0,
-            "socialNetwork": "Facebook",
-            "socialUser": "",
-
-        }
-
-    ];
+    const socialArray = user.social
+        
 
     const [social, setSocial] = React.useState(socialArray);
 
@@ -35,6 +28,7 @@ export const SocialForm = ({handleChange}) =>{
                     : item
                 )
             )
+            handleChange("social", social);
         }
 
         const handleChangeSocialNetwork=(event)=>{
@@ -46,6 +40,7 @@ export const SocialForm = ({handleChange}) =>{
                     : item
                 )
             )
+            handleChange("social", social);
             
         }
 
@@ -107,10 +102,10 @@ export const SocialForm = ({handleChange}) =>{
         
     }
 
-    useEffect(() => {
+/*     useEffect(() => {
         handleChange("social", social);
 
-    },[social, handleChange]); 
+    },[social, handleChange]);  */
     
     return (
         <React.Fragment>

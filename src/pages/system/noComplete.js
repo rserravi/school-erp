@@ -1,50 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 // material-ui
 import { Grid, Stack, Typography } from '@mui/material';
-import { Button } from "@mui/material/index";
 
 // project import
-import AuthWrapper from "pages/authentication/AuthWrapper";
-import { Avatar } from "@mui/material/index";
-import { PersonAddOutlined } from "@mui/icons-material/index";
-import { NameForm } from "components/forms/name-comp";
+import ProfileWrapper from "pages/authentication/ProfileWrapper";
+import { profileCompletness } from "utils/profileChecker";
+import CircularProgressWithLabel from 'pages/components-overview/CircularProgressWithLabel';
+import UserForm from "components/forms/userform-comp";
+import CompanyForm from "components/forms/companyform-comp";
+
 
 // ================================|| LOGIN ||================================ //
 
 const NoComplete = () => {
+    const activeUser = useSelector(state => state.user)
+    
+    var user = activeUser.loggedUser
+    var isCompleted = user.isCompleted
+    const [profileComplete, setProfileComplete] = useState(profileCompletness(user))
 
-    const handleChange = (key, value) =>{
-        console.log("KEY", key, "VALUE", value)
-        
-    }
+    useEffect(()=>{
+       
+        console.log("PROFILE COMPLETE EN USEEFFECT", profileComplete)
+
+    },[profileComplete, user])
 
     return(
-    <AuthWrapper>
-        <Grid container spacing={3} sx={{display: 'flex',
+    <ProfileWrapper>
+         <Grid container spacing={3} sx={{display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',}}>   
             <Grid item>
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                    <PersonAddOutlined />
-                </Avatar>
+                <CircularProgressWithLabel value={profileComplete} />
             </Grid>
             <Grid item xs={12}>
                 <Stack direction="column" justifyContent="space-between" alignItems="baseline" sx={{ mb: { xs: -0.5, sm: 0.5 } }}>
-                    <Typography variant="h3">Complete your profile to continue</Typography>        
+                    <Typography variant="h3" sx={{mb:10}}>Complete your profile to continue</Typography>        
                 </Stack>
             </Grid>
-            
-            <Grid item xs={12}>
-                <Grid container spacing={3}>
-                <Grid item xs={12} sm={10} md={10}>
-                        <NameForm handleChange={handleChange} />
-                    </Grid>
-                </Grid>
-                    
             </Grid>
-        </Grid>
-    </AuthWrapper>
+        {isCompleted===0?<UserForm />:<CompanyForm />}
+    </ProfileWrapper>
     );
     }
 

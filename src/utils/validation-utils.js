@@ -2,6 +2,7 @@
 
 // Acepta NIEs (Extranjeros con X, Y o Z al principio)
 export function validateDNI(dni) {
+    if (dni){
     var numero, leti, letra;
     var expresion_regular_dni = /^[XYZ]?\d{5,8}[A-Z]$/;
 
@@ -27,6 +28,9 @@ export function validateDNI(dni) {
         //alert('Dni erroneo, formato no válido');
         return false;
     }
+  }else{
+    return false;
+  }
 }
 
  

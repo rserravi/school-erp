@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 // initial state
 const initialState = {
    loggedUser : {},
-   company: {},
    isloading : false,
    error: ""
 }
@@ -30,13 +29,16 @@ const user = createSlice({
            localStorage.removeItem("schoolERP");
            sessionStorage.removeItem("accessJWT");
            state.loggedUser = {}
-           state.company = {}
            state.isloading = false
            state.error = ""
+       },
+       setUser: (state, {payload})=>{
+           
+           state.loggedUser = payload
        }
    }
 });
  
 export default user.reducer;
 
-export const{getUserPending,getUserSuccess, getUserFail, resetUser}= user.actions;
+export const{getUserPending,getUserSuccess, getUserFail, resetUser, setUser}= user.actions;

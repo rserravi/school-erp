@@ -22,7 +22,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 // ==============================|| NAME FORM COMPONENT ||============================== //
 
 
-export const ImageForm = ({handleChange}) =>{
+export const ImageForm = ({handleChange, user}) =>{
 
     const videoConstraints = {
         width: 160,
@@ -31,8 +31,9 @@ export const ImageForm = ({handleChange}) =>{
     };
 
     const imageInit= "/assets/images/users/Portrait_Placeholder.png";
+    const imageFromUser = user.picture?user.picture:user.logo
 
-    const [image, setImage] = React.useState(imageInit);
+    const [image, setImage] = React.useState(imageFromUser?imageFromUser:imageInit);
     const [webcamShow, setWebcamShow] = React.useState(false);
     const webcamRef = React.useRef(null);
 
@@ -47,7 +48,13 @@ export const ImageForm = ({handleChange}) =>{
       const file = e.target.files[0];
       const base64 = await resizeFile(file)
       setImage(base64);
-      handleChange("image", base64);
+      var picture = {
+        filename:"",
+        file:base64,
+        type: "base64",
+        uploadTime: Date.now()
+      }
+      handleChange("picture", picture);
     }
 
     const getWebcamShot = ()=>{

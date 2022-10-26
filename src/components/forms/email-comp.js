@@ -6,23 +6,25 @@
 //                                                              //
 //==============================================================//
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Alert, Box, Button, FormControl, Grid, IconButton, InputLabel, MenuItem, Paper, Select, Typography } from "../../../node_modules/@mui/material/index";
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import { isValidEmail } from "utils/validation-utils";
 import { CssTextField } from "./overrideCSS";
-export const EmailForm = ({handleChange}) =>{
+export const EmailForm = ({handleChange, user}) =>{
     
 
 
-    const emailArray = [
+    /* const emailArray = [
         {
             "id":0,
-            "name": "Home",
-            "emailAddress": ""
+            "emailDescription": "Home",
+            "emailUrl": ""
         }
 
-    ];
+    ]; */
+
+    const emailArray = user.emails
 
     const [emails, setEmails] = React.useState(emailArray);
 
@@ -32,10 +34,12 @@ export const EmailForm = ({handleChange}) =>{
             setEmails(
                 emails.map(item => 
                     item.id === index ? 
-                    {...item, "emailAddress": event.target.value }
+                    {...item, "emailUrl": event.target.value }
                     : item
                 )
             )
+            handleChange("emails", emails);
+            
         }
 
         const handleChangeName=(event)=>{
@@ -55,6 +59,7 @@ export const EmailForm = ({handleChange}) =>{
                     : item
                 )
             )
+            handleChange("emails", emails);
             
         }
 
@@ -70,26 +75,26 @@ export const EmailForm = ({handleChange}) =>{
                                 id="emailName"
                                 onChange={handleChangeName}
                                 label="emailName"
-                                value = {element.name}
+                                value = {element.emailDescription}
                                                        
                                 >
-                                <MenuItem value={"Home"}>Home</MenuItem>
-                                <MenuItem value={"Work"}>Work</MenuItem>
-                                <MenuItem value={"Other"}>Other</MenuItem>
+                                <MenuItem value={"home"}>Home</MenuItem>
+                                <MenuItem value={"work"}>Work</MenuItem>
+                                <MenuItem value={"other"}>Other</MenuItem>
                             </Select>
                             </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} sx={{mt:2}} >
                     <CssTextField
                         placeholder="Enter a valid email address"
-                        value = {element.emailAddress}
+                        value = {element.emailUrl}
                         onChange={handleChangeEmail}
                         autoComplete='off'
                         fullWidth
                         size="small"  
                     />
                 </Grid>
-                {isValidEmail(element.emailAddress) ? <Alert severity="success">Valid Email</Alert>: <Alert severity="error">Not a Valid Email</Alert>}
+                {isValidEmail(element.emailUrl) ? <Alert severity="success">Valid Email</Alert>: <Alert severity="error">Not a Valid Email</Alert>}
                 </Paper> 
             </React.Fragment>
         )
@@ -99,18 +104,18 @@ export const EmailForm = ({handleChange}) =>{
     const HandleAddNew = (event) =>{
         const newEmail ={
             "id": emails.length,
-            "name": "Other",
-            "emailAddress": ""
+            "emailDescription": "other",
+            "emailUrl": ""
         }
         setEmails([...emails, newEmail]) //Spread op or will not re-render
         
     }
 
-    useEffect(() => {
+/*     useEffect(() => {
         handleChange("emails", emails);
 
     },[emails, handleChange]); 
-    
+     */
     return (
         <React.Fragment>
             <Typography sx={{mt:2}}>
