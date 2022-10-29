@@ -15,14 +15,14 @@ import { AddressForm } from "components/forms/address-comp";
 import { SocialForm } from "components/forms/social-comp";
 
 import { dispatch } from "store/index";
-import { setUser } from "store/reducers/userSlice";
+import { setLoading, setUser } from "store/reducers/userSlice";
 import AnimateButton from "components/@extended/AnimateButton";
 import { UserUpdate } from "api/userApi";
 
 
 // ================================|| LOGIN ||================================ //
 
-const UserForm = () => {
+const UserForm = ({increaseStep}) => {
     const activeUser = useSelector(state => state.user)
     
     var user = activeUser.loggedUser
@@ -54,6 +54,7 @@ const UserForm = () => {
     const SubmitButton = async (event) =>{
         user ={...user, isCompleted:1}
         console.log(user)
+        dispatch(setLoading())
         dispatch(setUser(user))
         setDialogOpen(false);
 
@@ -61,6 +62,7 @@ const UserForm = () => {
             .then((data)=>{
                 if(data.status==="success"){
                     console.log("UPDATE USER CORRECT",data.message)
+                    increaseStep();
                 }
                 else {
                     console.log("ERROR AT UPDATE USER",data.message)
@@ -70,6 +72,7 @@ const UserForm = () => {
             .catch((error)=>{
                 console.log("ERROR AT UPDATE USER",error)
             })
+        dispatch(setLoading())
 
     }
 

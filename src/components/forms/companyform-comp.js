@@ -6,25 +6,27 @@ import { Grid } from '@mui/material';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material/index";
 
 // project import
-import { NameForm } from "components/forms/name-comp";
 import { profileCompletness } from "utils/profileChecker";
 import { PhoneForm } from "components/forms/phone-comp";
 import { ImageForm } from "components/forms/image-comp";
 import { EmailForm } from "components/forms/email-comp";
 import { AddressForm } from "components/forms/address-comp";
 import { SocialForm } from "components/forms/social-comp";
+import AnimateButton from "components/@extended/AnimateButton";
 
 import { dispatch } from "store/index";
-import { setUser } from "store/reducers/userSlice";
-import AnimateButton from "components/@extended/AnimateButton";
+import { setLoading, setUser } from "store/reducers/userSlice";
+
 import { UserUpdate } from "api/userApi";
 import { CompanyNameForm } from "./companyName-comp ";
 import randomGenerator from "utils/randomGenerator";
+import { CreateClassroom, CreateEquipment, CreateSubject } from "api/schoolApi";
+import { newEquipment, newClassroom } from "api/initialData";
 
 
 // ================================|| LOGIN ||================================ //
 
-const CompanyForm = () => {
+const CompanyForm = ({increaseStep}) => {
     const activeUser = useSelector(state => state.user)
     var user = activeUser.loggedUser
     var company = activeUser.loggedUser.company
@@ -55,7 +57,15 @@ const CompanyForm = () => {
     },[profileComplete, user])
 
     const SubmitButton = async (event) =>{
-        company = {...company, "mongoDataBase":company.name+randomGenerator(5)}
+        dispatch(setLoading())
+        var mongoDataBase = "";
+        if (!company.mongoDataBase || company.mongoDataBase===""){
+            mongoDataBase = company.name+randomGenerator(5);
+            company = {...company, "mongoDataBase":mongoDataBase}
+        }else{
+            mongoDataBase = company.mongoDataBase
+
+        }
         user ={...user, company:company, isCompleted:2}
         console.log(user)
         dispatch(setUser(user))
@@ -65,6 +75,7 @@ const CompanyForm = () => {
             .then((data)=>{
                 if(data.status==="success"){
                     console.log("UPDATE USER CORRECT",data.message)
+                    increaseStep();
                 }
                 else {
                     console.log("ERROR AT UPDATE USER",data.message)
@@ -74,6 +85,54 @@ const CompanyForm = () => {
             .catch((error)=>{
                 console.log("ERROR AT UPDATE USER",error)
             })
+
+           
+        await CreateEquipment(newEquipment, mongoDataBase )
+            .then((data)=>{
+                if(data.status==="success"){
+                    console.log("EQUIPMENT CREATED",data.message)
+                    increaseStep();
+                }
+                else {
+                    console.log("ERROR AT CREATE EQUIPMENT",data.message)
+                }
+
+            })
+            .catch((error)=>{
+                console.log("ERROR AT CREATE EQUIPMENT",error)
+            })
+        
+        await CreateClassroom(newClassroom, mongoDataBase)
+            .then((data)=>{
+                if(data.status==="success"){
+                    console.log("CLASSROOM CREATED",data.message)
+                    increaseStep();
+                }
+                else {
+                    console.log("ERROR AT CREATE CLASSROOM",data.message)
+                }
+
+            })
+            .catch((error)=>{
+                console.log("ERROR AT CREATE CLASSROOM",error)
+            })
+
+        await CreateSubject(newClassroom, mongoDataBase)
+            .then((data)=>{
+                if(data.status==="success"){
+                    console.log("CLASSROOM CREATED",data.message)
+                    increaseStep();
+                }
+                else {
+                    console.log("ERROR AT CREATE CLASSROOM",data.message)
+                }
+
+            })
+            .catch((error)=>{
+                console.log("ERROR AT CREATE CLASSROOM",error)
+            })
+
+        dispatch(setLoading())
 
     }
 

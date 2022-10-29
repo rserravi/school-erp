@@ -16,6 +16,10 @@ const user = createSlice({
        getUserPending: (state)=>{
            state.isloading = true
        },
+       setLoading: (state)=>{
+            state.isloading = !state.isloading
+
+       },
        getUserSuccess: (state, {payload})=>{
            state.isloading = false
            state.loggedUser = payload
@@ -41,4 +45,4 @@ const user = createSlice({
  
 export default user.reducer;
 
-export const{getUserPending,getUserSuccess, getUserFail, resetUser, setUser}= user.actions;
+export const{getUserPending,getUserSuccess, getUserFail, resetUser, setUser, setLoading}= user.actions;

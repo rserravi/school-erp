@@ -74,14 +74,15 @@ const AuthLogin = () => {
 
                         if(isAuth.status === "success"){
                             const user = dispatch (getUserProfile());
-                            console.log("USER EN LOGIN", user)
+                            
                             user.then((data)=>{
+                                console.log("USER EN LOGIN", user)
                                  console.log("USER FETCHED. IS COMPLETED? ", data.payload.isCompleted)
                                  navigation("/dashboard/default")
                                 
                                 })
                                 .catch((err)=>{
-                                    console.log("ERR", err)
+                                    console.log("ERROR EN LOGIN", err)
                                     setStatus({ success: false });
                                     setErrors({ submit: err.message });
                                     setSubmitting(false);

@@ -9,6 +9,7 @@ const userVerificationUrl = userProfileUrl + "/verify"
 const recoverUrl = userProfileUrl + "/reset-password"
 
 export const userLogin = (frmData) =>{
+    console.log("USERLOGIN FRMDATA", frmData)
     return new Promise( async(resolve, reject)=>{
         try {
             const res = await axios.post(loginUrl, frmData);
@@ -68,7 +69,7 @@ export const userRegistrationVerification = (frmData) =>{
 export const fetchUser = () =>{
     return new Promise( async(resolve, reject)=>{
         try {
-
+            console.log("FETCHUSER")
             const accessJWT = sessionStorage.getItem("accessJWT");
             if (!accessJWT){
                 reject("Token not found!");
@@ -182,8 +183,7 @@ export const UserUpdate = (data) =>{
             const res = await axios.patch(userProfileUrl, frmData, config);
             console.log(res.data)
             resolve(res.data);
-            //console.log("Status en updateUser");
-            //console.log(res.data);
+
             if(res.data.status ==="success"){
                resolve(res.data)
             }

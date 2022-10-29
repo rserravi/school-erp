@@ -79,7 +79,7 @@ const MainLayout = () => {
     <React.Fragment>
         {isAuth?(
             isVerified?(
-                isCompleted>1?( ///0: after login 1: after user. 2:After company. 
+                isCompleted>2?( ///0: after login 1: after user. 2:After company. 
                 <Box sx={{ display: 'flex', width: '100%' }}>
                     <Header open={open} handleDrawerToggle={handleDrawerToggle} />
                     <Drawer open={open} handleDrawerToggle={handleDrawerToggle} />
