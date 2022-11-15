@@ -20,8 +20,8 @@ import { setLoading, setUser } from "store/reducers/userSlice";
 import { UserUpdate } from "api/userApi";
 import { CompanyNameForm } from "./companyName-comp ";
 import randomGenerator from "utils/randomGenerator";
-import { CreateClassroom, CreateEquipment, CreateSubject } from "api/schoolApi";
-import { newEquipment, newClassroom } from "api/initialData";
+import { CreateClassroom, CreateEquipment, CreatePerson, CreateSubject } from "api/schoolApi";
+import { newEquipment, newClassroom, newSubject, newLead, newStudent, newTeacher, newOfficeStaff } from "api/initialData";
 
 
 // ================================|| LOGIN ||================================ //
@@ -71,6 +71,8 @@ const CompanyForm = ({increaseStep}) => {
         dispatch(setUser(user))
         setDialogOpen(false);
 
+        //CREATING INITIAL DATA
+
         await UserUpdate(user)
             .then((data)=>{
                 if(data.status==="success"){
@@ -117,19 +119,79 @@ const CompanyForm = ({increaseStep}) => {
                 console.log("ERROR AT CREATE CLASSROOM",error)
             })
 
-        await CreateSubject(newClassroom, mongoDataBase)
+        await CreateSubject(newSubject, mongoDataBase)
             .then((data)=>{
                 if(data.status==="success"){
-                    console.log("CLASSROOM CREATED",data.message)
+                    console.log("SUBJECT CREATED",data.message)
                     increaseStep();
                 }
                 else {
-                    console.log("ERROR AT CREATE CLASSROOM",data.message)
+                    console.log("ERROR AT CREATE SUBJECT",data.message)
                 }
 
             })
             .catch((error)=>{
-                console.log("ERROR AT CREATE CLASSROOM",error)
+                console.log("ERROR AT CREATE SUBJECT",error)
+            })
+
+        await CreatePerson(newLead, mongoDataBase)
+            .then((data)=>{
+                if(data.status==="success"){
+                    console.log("LEAD CREATED",data.message)
+                    increaseStep();
+                }
+                else {
+                    console.log("ERROR AT CREATE LEAD",data.message)
+                }
+
+            })
+            .catch((error)=>{
+                console.log("ERROR AT CREATE LEAD",error)
+            })
+        
+        await CreatePerson(newStudent, mongoDataBase)
+            .then((data)=>{
+                if(data.status==="success"){
+                    console.log("STUDENT CREATED",data.message)
+                    increaseStep();
+                }
+                else {
+                    console.log("ERROR AT CREATE STUDENT",data.message)
+                }
+
+            })
+            .catch((error)=>{
+                console.log("ERROR AT CREATE STUDENT",error)
+            })
+
+        await CreatePerson(newTeacher, mongoDataBase)
+            .then((data)=>{
+                if(data.status==="success"){
+                    console.log("TEACHER CREATED",data.message)
+                    increaseStep();
+                }
+                else {
+                    console.log("ERROR AT CREATE TEACHER",data.message)
+                }
+
+            })
+            .catch((error)=>{
+                console.log("ERROR AT CREATE TEACHER",error)
+            })
+        
+        await CreatePerson(newOfficeStaff, mongoDataBase)
+            .then((data)=>{
+                if(data.status==="success"){
+                    console.log("OFFICE STAFF CREATED",data.message)
+                    increaseStep();
+                }
+                else {
+                    console.log("ERROR AT CREATE OFFICE STAFF",data.message)
+                }
+
+            })
+            .catch((error)=>{
+                console.log("ERROR AT CREATE OFFICE STAFF",error)
             })
 
         dispatch(setLoading())

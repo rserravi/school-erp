@@ -9,6 +9,7 @@ import ProfileWrapper from "pages/authentication/ProfileWrapper";
 import UserForm from "components/forms/userform-comp";
 import CompanyForm from "components/forms/companyform-comp";
 import { Backdrop, CircularProgress, Step, StepLabel, Stepper } from "../../../node_modules/@mui/material/index";
+import CongratulationsForm from "components/forms/congratulations-form";
 
 
 // ================================|| LOGIN ||================================ //
@@ -22,7 +23,7 @@ const NoComplete = () => {
     const steps = [
         'Complete your user profile',
         'Complete company profile',
-        'Create some starting data',
+        'Creating some fake initial data',
       ];
     const [activeStep, setActiveStep] = React.useState(isCompleted);
 
@@ -68,10 +69,7 @@ const NoComplete = () => {
                //ACTIVE STEP 3
                (
                 <React.Fragment>
-                    <Stack direction="column" justifyContent="space-between" alignItems="baseline" sx={{ mb: { xs: -0.5, sm: 0.5 } }}>
-                        <Typography variant="h3" sx={{mb:10}}>Create initial data to start</Typography>        
-                    </Stack>
-                    <></>
+                    <CongratulationsForm increaseStep={increaseStep} />
                 </React.Fragment>
                )
             }
